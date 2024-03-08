@@ -23,7 +23,7 @@ async function get_ohlc_data(resolution,slug,year,all,date = null) {
     formattedDate = fromDate.toISOString().split('T')[0];
   }
   const base_url = `https://mainnet.gomaestro-api.org/v1/markets/dexs/ohlc/minswap/ADA-${slug}`;
-  const url = `${base_url}?resolution=${resolution}&api-key=OnaNR6yixINoXekXo19hBl272mIXqnBq&sort=desc&from=${formattedDate}&limit=50000`;
+  const url = `${base_url}?resolution=${resolution}&api-key={api_key}&sort=desc&from=${formattedDate}&limit=50000`;
   try {
     const response = await fetch(url);
 
@@ -157,7 +157,7 @@ function getTargetData(Res1m, target_timestamp) {
   return {index: index,target_data: target_data};
 }
 async function get_pair_info(slug) {
-  const base_url = 'https://mainnet.gomaestro-api.org/v1/markets/dexs/minswap?api-key=OnaNR6yixINoXekXo19hBl272mIXqnBq';
+  const base_url = 'https://mainnet.gomaestro-api.org/v1/markets/dexs/minswap?api-key={api_key}';
 
   try {
     const response = await fetch(base_url);
@@ -176,7 +176,7 @@ async function get_pair_info(slug) {
   }
 }
 async function getAssetData(assetId) {
-  const asset_url = `https://mainnet.gomaestro-api.org/v1/assets/${assetId}?api-key=OnaNR6yixINoXekXo19hBl272mIXqnBq`;
+  const asset_url = `https://mainnet.gomaestro-api.org/v1/assets/${assetId}?api-key={api_key}`;
 
   try {
     const response = await fetch(asset_url);
@@ -190,7 +190,7 @@ async function getAssetData(assetId) {
 }
 
 async function marketData(slug) {
-  const api_url = `https://mainnet.gomaestro-api.org/v1/markets/dexs/stats/minswap/ADA-${slug}?api-key=OnaNR6yixINoXekXo19hBl272mIXqnBq`;
+  const api_url = `https://mainnet.gomaestro-api.org/v1/markets/dexs/stats/minswap/ADA-${slug}?api-key={api_key}`;
 
   try {
     const response = await fetch(api_url);
